@@ -26,7 +26,7 @@
                 </div>
                 <div class="flex flex-col tablet:flex-row gap-4">
                     <x-partials.guest.promo-card promoImage="https://ik.imagekit.io/tvlk/image/imageResource/2024/04/03/1712115467746-43d8a7d781a6c5e16f40483552bdc2e8.png?tr=dpr-2,q-75,w-1280"/>
-                    <x-partials.guest.promo-card promoImage="https://ik.imagekit.io/tvlk/image/imageResource/2024/05/31/1717142432380-b725bc104e57cc1ff950bbc63362e871.png?tr=q-75"/>                
+                    <x-partials.guest.promo-card promoImage="https://ik.imagekit.io/tvlk/image/imageResource/2024/05/31/1717142432380-b725bc104e57cc1ff950bbc63362e871.png?tr=q-75"/>
                 </div>
             </div>
         </section>
@@ -50,11 +50,32 @@
                         Here are some promo that we have made special for you. Pick before it expires!
                     </p>
                 </div>
-                <div class="flex flex-col items-stretch tablet:flex-row gap-4 ">
-                    <x-partials.guest.accomodation-card href="#" propertyImage="https://images.unsplash.com/photo-1718030323555-214805b7f884?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" accomodationName="Atta Mesari Ubud" accomodationLocation="Ubud, Gianyar" nearbyLocation="Ubud Art Market" oldPrice="IDR 1.800.000" currentPrice="IDR 1.550.000"/>
-                    <x-partials.guest.accomodation-card href="#" propertyImage="https://images.unsplash.com/photo-1718053514237-0d287a33011c?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" accomodationName="Arkamara Dijiwa Sanctuaries" accomodationLocation="Ubud, Gianyar" nearbyLocation="Ubud Art Market" oldPrice="IDR 1.800.000" currentPrice="IDR 1.550.000"/>
-                    <x-partials.guest.accomodation-card href="#" propertyImage="https://images.unsplash.com/photo-1583329550487-0fa300a4cd1a?q=80&w=2696&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" accomodationName="Goya Boutique Resort" accomodationLocation="Ubud, Gianyar" nearbyLocation="Ubud Art Market" oldPrice="IDR 1.800.000" currentPrice="IDR 1.550.000"/>
-                    <x-partials.guest.accomodation-card href="#" propertyImage="https://images.unsplash.com/photo-1586105251261-72a756497a11?q=80&w=2758&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" accomodationName="Vije Boutique Resort and Spa" accomodationLocation="Ubud, Gianyar" nearbyLocation="Ubud Art Market" oldPrice="IDR 1.800.000" currentPrice="IDR 1.550.000"/>
+                <div class="max-w-full tablet:max-w-2xl laptop:max-w-4xl laptop-l:max-w-7xl mx-auto px-4 tablet:px-0">
+                    <div class="flex gap-x-2">
+                        <x-partials.guest.btn-tab-accomodations title="Canggu" active="{{ true }}"  />
+                        <x-partials.guest.btn-tab-accomodations title="Seminyak" active="{{ false }}" />
+                        <x-partials.guest.btn-tab-accomodations title="Sanur" active="{{ false }}" />
+                        <x-partials.guest.btn-tab-accomodations title="Jimbaran" active="{{ false }}" />
+                        <x-partials.guest.btn-tab-accomodations title="Kintamani" active="{{ false }}" />
+                    </div>
+                </div>
+                <div class="w-full relative">
+                    <div class="overflow-hidden" id="slider-container-accomodations">
+                        <div class="flex flex-col items-stretch tablet:flex-row gap-4 static transition duration-700" id="slider-accomodations">
+                            @foreach($accomodations as $accomodation)
+                                <x-partials.guest.accomodation-card
+                                    href=""
+                                    propertyImage="{{ $accomodation['property_image'] }}"
+                                    accomodationName="{{ $accomodation['accomodation_name'] }}"
+                                    accomodationLocation="{{ $accomodation['accomodation_location'] }}"
+                                    nearbyLocation="{{ $accomodation['nearby_location'] }}"
+                                    oldPrice="{{ $accomodation['old_price'] }}"
+                                    currentPrice="{{ $accomodation['current_price'] }}"
+                                />
+                            @endforeach
+                        </div>
+                    </div>
+                    <x-partials.guest.icon-slider id="btn-next-accomodations"/>
                 </div>
                 <div>
                     <x-partials.guest.orange-text-button href="#">
@@ -83,6 +104,7 @@
                         We serve you villa, resort, and hotel for your convenience in Bali - The Land of Gods
                     </p>
                 </div>
+                <x-partials.guest.slider-activities />
                 <div>
                     <x-partials.guest.orange-text-button href="#">
                         Explore More Activities
@@ -110,6 +132,10 @@
                         Here are some package that we have made special for you. Grab before it expires!
                     </p>
                 </div>
+                <div class="flex flex-col tablet:flex-row gap-4">
+                    <x-partials.guest.promo-card promoImage="https://ik.imagekit.io/tvlk/image/imageResource/2024/04/03/1712115467746-43d8a7d781a6c5e16f40483552bdc2e8.png?tr=dpr-2,q-75,w-1280"/>
+                    <x-partials.guest.promo-card promoImage="https://ik.imagekit.io/tvlk/image/imageResource/2024/05/31/1717142432380-b725bc104e57cc1ff950bbc63362e871.png?tr=q-75"/>
+                </div>
                 <div>
                     <x-partials.guest.orange-text-button href="#">
                         See More Recommended Package
@@ -118,5 +144,60 @@
             </div>
         </section>
         {{-- Package Section End --}}
+        <section class="py-7 w-full">
+            <div class="max-w-full tablet:max-w-2xl laptop:max-w-4xl laptop-l:max-w-7xl mx-auto px-4 tablet:px-0 space-y-10">
+                <div>
+                    <div class="flex items-center space-x-3">
+                        <div>
+                            <x-icon.youtube-icon />
+                        </div>
+                        <div class="space-y-2">
+                            <x-partials.guest.third-heading>
+                                Check our videos
+                            </x-partials.guest.third-heading>
+                        </div>
+                    </div>
+                    <p class="text-sm tablet:text-base font-medium text-[#7C7C7C]">
+                        Here are some of our videos for you to gain your insight
+                    </p>
+                </div>
+                <div class="flex flex-col tablet:flex-row gap-4">
+
+                </div>
+                <div>
+                    <x-partials.guest.orange-text-button href="#">
+                        See More Recommended Package
+                    </x-partials.guest.orange-text-button>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let sliderContainer = document.getElementById('slider-container-accomodations');
+            let slider = document.getElementById('slider-accomodations');
+            let cards = slider.children;
+            let elementsToShow = 4;
+            let sliderContainerWidth = sliderContainer.clientWidth;
+            let cardWidth = sliderContainerWidth / elementsToShow;
+            let currentIndex = 0;
+
+            slider.style.width = cards.length * cardWidth + 'px';
+
+            function next() {
+                if (currentIndex < cards.length - elementsToShow) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+
+
+            document.getElementById('btn-next-accomodations').addEventListener('click', next);
+
+        });
+    </script>
 </x-layouts.guest.main-layout>
